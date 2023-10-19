@@ -10,7 +10,7 @@ function NewsList() {
   const [currentPage, setCurrentPage] = useState(1);
 
   async function fetchNews() {
-    const response = await fetch("http://servicodados.ibge.gov.br/api/v3/noticias/");
+    const response = await fetch("https://servicodados.ibge.gov.br/api/v3/noticias/");
     const data = await response.json();
     return data.items;
   }
