@@ -21,7 +21,7 @@ useEffect(() => {
     });
   }, []);
 
-  const currentNews = escolherPagina(currentPage, news, setNews, setCurrentPage)
+  const currentNews = escolherPagina(currentPage, news)
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -36,7 +36,7 @@ useEffect(() => {
   return (
     <>
       <Titulo title={"Notícias"} />
-      <NextPage nextPage ={nextPage} prevPage={prevPage} currentPage={currentPage}></NextPage>
+      <NextPage nextPage ={nextPage} prevPage={prevPage} currentPage={currentPage} numberPage={true}></NextPage>
       <Carregador currentNews={currentNews} currentPage={currentPage}/>
       <NextPage nextPage ={nextPage} prevPage={prevPage} currentPage={currentPage}></NextPage>
     </>
