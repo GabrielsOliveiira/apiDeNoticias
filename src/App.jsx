@@ -8,6 +8,7 @@ import { escolherPagina } from './Scripts/CarregarNoticia';
 function NewsList() {
   const [news, setNews] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   async function fetchNews() {
     const response = await fetch("https://servicodados.ibge.gov.br/api/v3/noticias/");
@@ -15,11 +16,20 @@ function NewsList() {
     return data.items;
   }
 
-useEffect(() => {
-    fetchNews().then(results => {
-      setNews(results);
-    });
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [initialData] = await Promise.all([fetchNews(currentPage)]);
+        setNews(initialData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, [currentPage]);
 
   const currentNews = escolherPagina(currentPage, news)
 
@@ -37,7 +47,7 @@ useEffect(() => {
     <>
       <Titulo title={"Notícias"} />
       <NextPage nextPage ={nextPage} prevPage={prevPage} currentPage={currentPage} numberPage={true}></NextPage>
-      <Carregador currentNews={currentNews} currentPage={currentPage}/>
+      {loading ? <p>Carregando...</p> : <Carregador currentNews={currentNews} currentPage={currentPage} />}
       <NextPage nextPage ={nextPage} prevPage={prevPage} currentPage={currentPage}></NextPage>
     </>
   );
