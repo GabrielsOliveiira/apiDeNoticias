@@ -5,6 +5,12 @@ body{
   background-color: rgb(41, 39, 39);
 }
 
+.loading{
+  text-align: center;
+  font-size: large;
+  color: azure;
+}
+
 .title{
   font-size: 40px;
   display: flex;

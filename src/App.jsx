@@ -24,7 +24,7 @@ function NewsList() {
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     }
 
@@ -47,7 +47,7 @@ function NewsList() {
     <>
       <Titulo title={"Notícias"} />
       <NextPage nextPage ={nextPage} prevPage={prevPage} currentPage={currentPage} numberPage={true}></NextPage>
-      {loading ? <p>Carregando...</p> : <Carregador currentNews={currentNews} currentPage={currentPage} />}
+      {loading ? <p className='loading'>Carregando...</p> : <Carregador currentNews={currentNews} currentPage={currentPage} />}
       <NextPage nextPage ={nextPage} prevPage={prevPage} currentPage={currentPage}></NextPage>
     </>
   );
