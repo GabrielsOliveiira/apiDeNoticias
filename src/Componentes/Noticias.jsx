@@ -1,8 +1,10 @@
 export default function Noticias({thisNews}){
+  const tituloTratado = `\u00a0\u00a0${thisNews.titulo}`;
+  const introducaoTratado = `\u00a0\u00a0${thisNews.introducao}`
     return(
         <div className='news' key={thisNews.id}>
-            <h2 className='newsTitle'>{thisNews.titulo}</h2>
-            <p className='introduction'>{thisNews.introducao}</p>
+            <h2 className='newsTitle'>  {tituloTratado}</h2>
+            <p className='introduction'>  {introducaoTratado}</p>
             <div className="bottom">
               <div className='references'>
                 <p className='editorials'>{thisNews.editorias}</p>
