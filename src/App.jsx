@@ -28,6 +28,10 @@ function NewsList() {
     }
 
     fetchData();
+
+    return() => {
+      new AbortController().abort
+    }
   }, [currentPage]);
 
 
