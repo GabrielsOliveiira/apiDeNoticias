@@ -47,8 +47,15 @@ function NewsList() {
     <>
       <Titulo title={"Notícias"} />
       <NextPage nextPage ={nextPage} prevPage={prevPage} currentPage={currentPage} numberPage={true}></NextPage>
-      {loading ? <p className='loading'>Carregando...</p> : <Carregador currentNews={news} currentPage={currentPage} />}
-      <NextPage nextPage ={nextPage} prevPage={prevPage} currentPage={currentPage}></NextPage>
+      {
+      loading ? 
+      <p className='loading'>Carregando...</p>
+      : 
+      (
+      <>
+        <Carregador currentNews={news} currentPage={currentPage} />
+        <NextPage nextPage ={nextPage} prevPage={prevPage} currentPage={currentPage}></NextPage>
+      </>)}
     </>
   );
 }
